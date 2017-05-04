@@ -13,9 +13,9 @@
 		181097B01EB9C0D600EBBCF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181097AE1EB9C0D600EBBCF2 /* Main.storyboard */; };
 		181097B21EB9C0D600EBBCF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181097B11EB9C0D600EBBCF2 /* Assets.xcassets */; };
 		181097B51EB9C0D600EBBCF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181097B31EB9C0D600EBBCF2 /* LaunchScreen.storyboard */; };
-		181097BE1EB9C0EE00EBBCF2 /* YHCutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 181097BD1EB9C0EE00EBBCF2 /* YHCutter.m */; };
 		181097C11EB9C65100EBBCF2 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181097C01EB9C65100EBBCF2 /* ListViewController.m */; };
 		181097C31EB9C7BE00EBBCF2 /* 8230108.png in Resources */ = {isa = PBXBuildFile; fileRef = 181097C21EB9C7BE00EBBCF2 /* 8230108.png */; };
+		18CD42481EBB0574002EEDB6 /* YHCutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD42471EBB0574002EEDB6 /* YHCutter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +29,11 @@
 		181097B11EB9C0D600EBBCF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		181097B41EB9C0D600EBBCF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		181097B61EB9C0D600EBBCF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		181097BC1EB9C0EE00EBBCF2 /* YHCutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCutter.h; sourceTree = "<group>"; };
-		181097BD1EB9C0EE00EBBCF2 /* YHCutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCutter.m; sourceTree = "<group>"; };
 		181097BF1EB9C65100EBBCF2 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		181097C01EB9C65100EBBCF2 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		181097C21EB9C7BE00EBBCF2 /* 8230108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8230108.png; sourceTree = "<group>"; };
+		18CD42461EBB0574002EEDB6 /* YHCutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCutter.h; sourceTree = "<group>"; };
+		18CD42471EBB0574002EEDB6 /* YHCutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCutter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +72,7 @@
 				181097AC1EB9C0D600EBBCF2 /* ViewController.m */,
 				181097BF1EB9C65100EBBCF2 /* ListViewController.h */,
 				181097C01EB9C65100EBBCF2 /* ListViewController.m */,
-				181097BC1EB9C0EE00EBBCF2 /* YHCutter.h */,
-				181097BD1EB9C0EE00EBBCF2 /* YHCutter.m */,
+				18CD42451EBB0574002EEDB6 /* Cutter */,
 				181097AE1EB9C0D600EBBCF2 /* Main.storyboard */,
 				181097C21EB9C7BE00EBBCF2 /* 8230108.png */,
 				181097B11EB9C0D600EBBCF2 /* Assets.xcassets */,
@@ -90,6 +89,15 @@
 				181097A61EB9C0D600EBBCF2 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18CD42451EBB0574002EEDB6 /* Cutter */ = {
+			isa = PBXGroup;
+			children = (
+				18CD42461EBB0574002EEDB6 /* YHCutter.h */,
+				18CD42471EBB0574002EEDB6 /* YHCutter.m */,
+			);
+			path = Cutter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +174,8 @@
 			files = (
 				181097C11EB9C65100EBBCF2 /* ListViewController.m in Sources */,
 				181097AD1EB9C0D600EBBCF2 /* ViewController.m in Sources */,
-				181097BE1EB9C0EE00EBBCF2 /* YHCutter.m in Sources */,
 				181097AA1EB9C0D600EBBCF2 /* AppDelegate.m in Sources */,
+				18CD42481EBB0574002EEDB6 /* YHCutter.m in Sources */,
 				181097A71EB9C0D600EBBCF2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +335,7 @@
 				181097BB1EB9C0D600EBBCF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
