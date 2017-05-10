@@ -1,24 +1,31 @@
 //
-//  YHCutter.m
+//  UIView+YHCutter.m
 //  YHCutter
 //
-//  Created by apple on 3/5/17.
+//  Created by apple on 10/5/17.
 //  Copyright © 2017年 于欢. All rights reserved.
 //
 
-#import "YHCutter.h"
+#import "UIView+YHCutter.h"
 
-@implementation YHCutter
+@implementation UIView (YHCutter)
+-(void)cuttingDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor{
+    if ([self isKindOfClass:[UIImageView class]]) {
+        [self cuttingImageViewDirection:direction cornerRadii:cornerRadii borderWidth:borderWidth borderColor:borderColor backgroundColor:backgroundColor];
+    }else{
+        [self cuttingViewDirection:direction cornerRadii:cornerRadii borderWidth:borderWidth borderColor:borderColor backgroundColor:backgroundColor];
+    }
+}
 #pragma mark - 切割UIView、UIButton和UILabel
-+ (void)cuttingView:(UIView *)view cuttingDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor
+- (void)cuttingViewDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor
 {
-    if (view.bounds.size.height != 0 && view.bounds.size.width != 0) {// 使用代码自动布局后，view的bounds是异步返回的，这里需要做初步的判断
-        [view layoutIfNeeded];// 使用Xib可视化自动布局后，view自动布局还未完成
-        CGFloat width = view.bounds.size.width, height = view.bounds.size.height;
+    if (self.bounds.size.height != 0 && self.bounds.size.width != 0) {// 使用代码自动布局后，view的bounds是异步返回的，这里需要做初步的判断
+        [self layoutIfNeeded];// 使用Xib可视化自动布局后，view自动布局还未完成
+        CGFloat width = self.bounds.size.width, height = self.bounds.size.height;
         
         UIImage * image = nil;
         // 先利用CoreGraphics绘制一个圆角矩形
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, [UIScreen mainScreen].scale);
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [UIScreen mainScreen].scale);
         CGContextRef currnetContext = UIGraphicsGetCurrentContext();
         if (currnetContext) {
             if (backgroundColor == nil) {
@@ -28,7 +35,7 @@
             CGContextSetStrokeColorWithColor(currnetContext, borderColor.CGColor);// 设置画笔颜色
             
             if (cornerRadii == 0) {
-                cornerRadii = view.bounds.size.height / 2;
+                cornerRadii = self.bounds.size.height / 2;
             }
             // 单切全角
             if (direction == UIRectCornerAllCorners) {
@@ -73,20 +80,20 @@
         // 绘制完成后，将UIImageView插入到view视图层级的底部
         if ([image isKindOfClass:[UIImage class]]) {
             UIImageView * baseImageView = [[UIImageView alloc] initWithImage:image];
-            [view insertSubview:baseImageView atIndex:0];
+            [self insertSubview:baseImageView atIndex:0];
         }
     } else { // 如果没有获取到view的bounds时
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self cuttingView:view cuttingDirection:direction cornerRadii:cornerRadii borderWidth:borderWidth borderColor:borderColor backgroundColor:backgroundColor];
+            [self cuttingViewDirection:direction cornerRadii:cornerRadii borderWidth:borderWidth borderColor:borderColor backgroundColor:backgroundColor];
         });
     }
 }
-
 #pragma mark - 切割UIImageView
-+ (void)cuttingImageView:(UIImageView *)imageView cuttingDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor
+- (void)cuttingImageViewDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor
 {
-    if (imageView.bounds.size.height != 0 && imageView.bounds.size.width != 0) {
-        [imageView layoutIfNeeded];// 使用Xib可视化自动布局后，view自动布局还未完成
+    UIImageView *imageView=(UIImageView *)self;
+    if (self.bounds.size.height != 0 && self.bounds.size.width != 0) {
+        [self layoutIfNeeded];// 使用Xib可视化自动布局后，view自动布局还未完成
         // 先截取UIImageView视图Layer生成的Image，然后再做渲染
         UIImage * image = nil;
         if (imageView.image) {
@@ -117,12 +124,12 @@
             imageView.image = image;
         } else { // UITableViewCell的UIImageView，第一次创建赋图时，可能无法获取UIImageView视图layer的图片
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self cuttingImageView:(UIImageView *)imageView cuttingDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor];
+                [self cuttingImageViewDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor];
             });
         }
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self cuttingImageView:(UIImageView *)imageView cuttingDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor];
+            [self cuttingImageViewDirection:(UIRectCorner)direction cornerRadii:(CGFloat)cornerRadii borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor backgroundColor:(UIColor *)backgroundColor];
         });
     }
 }

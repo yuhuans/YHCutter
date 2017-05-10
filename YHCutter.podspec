@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "YHCutter"
-s.version      = "1.0"
+s.version      = "1.1"
 s.summary      = "Cutter"
 s.description  = <<-DESC
 一个可自选切割角的圆角切割工具，同时支持UIView、UIImageView、UIButton和UILabel的单角切圆/选角拱形切圆/全角切圆，并且支持xib自动布局，纯代码约束布局

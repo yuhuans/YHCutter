@@ -7,7 +7,7 @@
 //
 
 #import "ListViewController.h"
-#import "YHCutter.h"
+#import "UIView+YHCutter.h"
 
 @interface ListViewController ()
 
@@ -38,7 +38,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.imageView.image=[UIImage imageNamed:@"8230108.png"];
-    [YHCutter cuttingImageView:cell.imageView cuttingDirection:UIRectCornerAllCorners cornerRadii:50 borderWidth:1 borderColor:[UIColor redColor] backgroundColor:[UIColor clearColor]];
+    [cell.imageView cuttingDirection:UIRectCornerAllCorners cornerRadii:50 borderWidth:1 borderColor:[UIColor redColor] backgroundColor:[UIColor clearColor]];
     return cell;
 }
 

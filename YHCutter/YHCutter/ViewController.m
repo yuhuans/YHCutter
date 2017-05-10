@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "YHCutter.h"
+#import "UIView+YHCutter.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *pushTestListBtn;
@@ -19,7 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [YHCutter cuttingView:self.pushTestListBtn cuttingDirection:UIRectCornerAllCorners cornerRadii:10 borderWidth:2 borderColor:[UIColor colorWithRed:243.0/255.0 green:152.0/255.0 blue:0.0/255.0 alpha:1] backgroundColor:[UIColor colorWithRed:243.0/255.0 green:152.0/255.0 blue:0.0/255.0 alpha:1]];
+    [self.pushTestListBtn cuttingDirection:UIRectCornerAllCorners
+                               cornerRadii:10 borderWidth:2
+                               borderColor:[UIColor colorWithRed:243.0/255.0 green:152.0/255.0 blue:0.0/255.0 alpha:1]
+                           backgroundColor:[UIColor colorWithRed:243.0/255.0 green:152.0/255.0 blue:0.0/255.0 alpha:1]];
     
     
     UIView *purpleView = [[UIView alloc] init];
@@ -37,7 +40,7 @@
     // top
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:purpleView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:200];
     [self.view addConstraint:topConstraint];
-    [YHCutter cuttingView:purpleView cuttingDirection:UIRectCornerAllCorners cornerRadii:10 borderWidth:2 borderColor:[UIColor redColor] backgroundColor:[UIColor purpleColor]];
+    [purpleView cuttingDirection:UIRectCornerAllCorners cornerRadii:10 borderWidth:2 borderColor:[UIColor redColor] backgroundColor:[UIColor purpleColor]];
 }
 
 
